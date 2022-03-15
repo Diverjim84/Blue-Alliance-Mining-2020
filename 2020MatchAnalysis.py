@@ -1,6 +1,6 @@
 import TBA_Tools as tba
 
-el = tba.GetEventList('2020')
+el = tba.GetEventList('2022')
 '''
 for e in el:
     if e['week'] in [0]:

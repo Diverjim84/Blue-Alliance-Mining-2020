@@ -1,8 +1,9 @@
 import json
 import requests
 import operator
+import Secrets
 
-myToken = 'URGab8tLhUZabkbIiBVGOjmKiyqlAmLO6Nqh4vc5DmqcGAC0XSDSBgQ3bnsu2nLf'
+myToken = Secrets.myToken
 baseURL = 'https://www.thebluealliance.com/api/v3/'
 eventKey = '2018alhu'
 # event/2018alhu/matches/keys

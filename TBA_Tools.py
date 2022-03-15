@@ -1,10 +1,11 @@
 import json
 import requests
 from datetime import date
+import Secrets
 
 
 
-myToken = 'URGab8tLhUZabkbIiBVGOjmKiyqlAmLO6Nqh4vc5DmqcGAC0XSDSBgQ3bnsu2nLf'
+myToken = Secrets.myToken
 baseURL = 'https://www.thebluealliance.com/api/v3/'
 headers = {'accept': 'application/json',
            'X-TBA-Auth-Key': myToken}
@@ -49,6 +50,16 @@ def GetEventMatchesVerbose(event):
         match_list = json.loads(r.content)
     else:
         match_list = [{"Msg Type": "Error","Status Code":r.status_code, "url":url}]
+    return match_list
+
+def GetMatcheVerbose(match):
+    url = baseURL+'match/'+match
+    #print(url)
+    r = requests.get(url, headers)
+    if r.status_code == 200:
+        match_list = json.loads(r.content)
+    else:
+        match_list = [{"Msg Type": "Error","Status Code":r.status_code,"Error Data": r.content, "url":url}]
     return match_list
 
 def GetSimpleTeamListAtEvent(event):
